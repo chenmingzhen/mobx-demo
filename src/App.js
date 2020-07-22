@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { render } from 'react-dom'
+import KeepAlive, { AliveScope } from './KeepAlive'
+
+
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      count: {count}
+      <button onClick={() => setCount(count => count + 1)}>add</button>
+    </div>
+  )
+}
 
 function App() {
+  const [show, setShow] = useState(true)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => setShow(show => !show)}>Toggle</button>
+      <p>无 KeepAlive</p>
+      {show && <Counter />}
+      <p>有 KeepAlive</p>
+      {show && (
+        <KeepAlive id="Test">
+          <Counter />
+        </KeepAlive>
+      )}
     </div>
-  );
+  )
 }
 
 export default App;
