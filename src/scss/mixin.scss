@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import "./variable";
+@mixin font_color(){
+  color: pink;
+  [data-theme="theme1"] & {
+    color:$theme1-color;
+  }
+  [data-theme="theme2"] & {
+    color:$theme2-color;
+  }
+}

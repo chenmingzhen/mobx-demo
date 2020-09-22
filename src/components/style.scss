@@ -1,0 +1,8 @@
+@import "src/scss/mixin";
+
+.wrapper {
+  > .text {
+    font-weight: 1000;
+    @include font_color;
+  }
+}
